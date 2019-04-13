@@ -1,2 +1,3 @@
 # vanwoow-develops
-Desarrollando Vanwoow
+
+Documentación del proceso de dessarollo de Vanwoow

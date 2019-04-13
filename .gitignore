@@ -1,0 +1,4 @@
+#Assets
+assets/scss
+assets/css/*
+!assets/css/min

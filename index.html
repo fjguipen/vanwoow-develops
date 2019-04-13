@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>The road to vanwoow</title>
+    <meta name="description" content="Esperiencias, descubrimientos y decisiones durante el desarrollo de la app vanwoow" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/min/style.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:800" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script type="text/javascript" src="data/posts.js"></script>
+    <script type="text/javascript" src="src/components.js"></script>
+    <script type="text/javascript" src="src/main.js"></script>
+</head>
+<body>
+    <header>
+        <h1 class="light">The road to</h1>
+        <img id="logo" src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/logo-footer-a.png" alt="logo" />
+    </header>
+    <main>
+        <div id="more" onclick="showMore(event.target)">
+            <div id="label" onclick="handleChildClick(event, 'open')">Ver más</div>
+            <button id="close" onclick="handleChildClick(event, 'close')"></button>
+        </div>
+        <div id="content"></div>
+    </main>
+    <footer>
+        <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/logo-footer-a.png" />
+        <p>&reg; · JaviGP</p>
+    </footer>
+</body>
+</html>
