@@ -9,7 +9,7 @@ const posts = [
         `
             <p><strong>¡HOLA!</strong> Me llamo Javi, autodidacta y apasionado del mundo de la programación, en especial el desarollo de aplicaciones web y la automatización. Desde que descubrí este mundillo (hace 2 años no sabía que era un bucle for <strong>:P</strong>) no he dejado de investigar y aprender. </p>
             
-            <p>Aprovecharé esta primera entrada para describir el porqué de esta página y el porqué deberías quedarte y acompañarnos <strong>;)</strong></p>
+            <p>Aprovecharé esta primera entrada para describir el porqué de esta página y por qué deberías quedarte y acompañarnos <strong>;)</strong></p>
 
             <h2>¿Vanwoow?</h2>
             <p><a href="https://vanwoow.es/" target="_blank"><u>Vanwoow</u></a> es un proyecto iniciativa de Manu y Auxi y en el que Ana y yo caímos inevitablemente. Trata sobre la despoblación de la España rural, de los viajeros autocaravanistas que podrían ayudar paliarla y de la plataforma que los pondrá a todos ellos en contacto.</p>
