@@ -8,7 +8,7 @@ const Post = (post) => {
         <article>
             ${Title(post.title)}
             ${DateC(post.date, post.by)}
-            ${Body(post.body)}
+            ${Body(post.body, post.url)}
         </article>
         `
     );
@@ -27,9 +27,20 @@ const DateC = (date, by) => {
     )
 }
 
-const Body = (text) => {
+const Body = (text, url) => {
     return (
-        `<div class="post-content">${text}</div>`
+        `
+        <div class="post-content">${text}</div>
+        <div class="footer">
+            <a href="${url.twitter}">
+                <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/twi-g.png">
+            </a>
+            <a href="${url.instagram}">
+                <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/insta-g.png">
+            </a>
+        </div>
+        `
+
     );
 }
 

@@ -4,7 +4,10 @@ const posts = [
         title: "Entrada de ejemplo 1",
         date: "8/2/19",
         by:"JaviGP",
-        url:"",
+        url:{
+            twitter:"",
+            instagram:""
+        },
         body: 
         `
             <p>Párrafo uno</p>
@@ -17,7 +20,10 @@ const posts = [
         title: "Entrada de ejemplo 2",
         date: "15/2/19",
         by:"JaviGP",
-        url:"",
+        url:{
+            twitter:"",
+            instagram:""
+        },
         body: 
         `
             <p>Párrafo uno</p>
@@ -30,7 +36,10 @@ const posts = [
         title: "Entrada de ejemplo 3",
         date: "18/2/19",
         by:"JaviGP",
-        url:"",
+        url:{
+            twitter:"",
+            instagram:""
+        },
         body: 
         `
             <p>Párrafo uno</p>
@@ -43,7 +52,10 @@ const posts = [
         title: "¡Hola mundo..! ¡Hola vanwoow!",
         date: "20/2/19",
         by:"JaviGP",
-        url:"",
+        url:{
+            twitter:"",
+            instagram:""
+        },
         body:
         `
             <p><strong>¡HOLA!</strong> Me llamo Javi, autodidacta y apasionado del mundo de la programación, en especial el desarollo de aplicaciones web y la automatización. Desde que descubrí este mundillo (hace 2 años no sabía que era un bucle for <strong>:P</strong>) no he dejado de investigar y aprender. </p>
@@ -60,7 +72,7 @@ const posts = [
             <br>
             <p>Así que si como yo, bebes 5 tazas de café al día, eres un freak de las nuevas tecnologías y te encanta piká código, <strong>¡te invito a que me acompañes y colabores abiertamente durante el desarollo!</strong></p>
 
-            <p>
+            <p><br>
             Ejemplo:
             <pre class="prettyprint lang-js">
 const Post = (post) => {
