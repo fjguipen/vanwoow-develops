@@ -3,7 +3,6 @@ const state = {
 }
 
 window.onload = () => {
-
     createContent();
     createMoreTrigger();
 }

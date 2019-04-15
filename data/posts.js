@@ -1,56 +1,8 @@
 const posts = [
     {
         id: 0,
-        title: "Entrada de ejemplo 1",
-        date: "8/2/19",
-        by:"JaviGP",
-        url:{
-            twitter:"",
-            instagram:""
-        },
-        body: 
-        `
-            <p>Párrafo uno</p>
-            <p>Párrafo dos</p>       
-            <p>Párrafo tres</p>       
-        `
-    },
-    {
-        id: 1,
-        title: "Entrada de ejemplo 2",
-        date: "15/2/19",
-        by:"JaviGP",
-        url:{
-            twitter:"",
-            instagram:""
-        },
-        body: 
-        `
-            <p>Párrafo uno</p>
-            <p>Párrafo dos</p>       
-            <p>Párrafo tres</p>       
-        `
-    },
-    {
-        id: 2,
-        title: "Entrada de ejemplo 3",
-        date: "18/2/19",
-        by:"JaviGP",
-        url:{
-            twitter:"",
-            instagram:""
-        },
-        body: 
-        `
-            <p>Párrafo uno</p>
-            <p>Párrafo dos</p>       
-            <p>Párrafo tres</p>       
-        `
-    },
-    {
-        id: 3,
         title: "¡Hola mundo..! ¡Hola vanwoow!",
-        date: "20/2/19",
+        date: "15/4/19",
         by:"JaviGP",
         url:{
             twitter:"",
@@ -69,12 +21,27 @@ const posts = [
 
             <h2>Blog tecnológico</h2>
             <p>En esta página iré describiendo el proceso de construcción de la aplicación web de vanwoow. Describiré la arquitectura, hablaré sobre las distintas tecnologías que se aplican como <strong>React</strong> o <strong>Graphql</strong>, toma de decisiones... así como comentar y describir todas aquellas novedades y descubirmientos que aparezcan durante el proceso. En definitiva, quiero <strong>compartir la experiencia de la creación de la plataforma</strong>.</p>
-            <br>
+
             <p>Así que si como yo, bebes 5 tazas de café al día, eres un freak de las nuevas tecnologías y te encanta piká código, <strong>¡te invito a que me acompañes y colabores abiertamente durante el desarollo!</strong></p>
 
             <p><br>
-            Ejemplo:
+            Veamos una función que uso en este mismo blog:
             <pre class="prettyprint lang-js">
+...
+
+/** 
+ * Recupera la publicación en base al índice
+ * que recibe por parámetro, y lo inserta en el DOM
+*/
+
+const createContent = (index = state.current) =>{
+    let postData = posts[index];
+    let root = document.getElementById('content');    
+
+    return root.innerHTML = Post(postData);
+}
+
+// Componente que contendrá la publicación
 const Post = (post) => {
     return (
         \`
@@ -85,8 +52,15 @@ const Post = (post) => {
         &lt;/article&gt;
         \`
     )
-}            </pre>
+}
+
+...</pre>
             </p>
+            <p>La primera función extrae una publicación del array de datos y lo inserta en el DOM. El índice por defecto es el último elemento de un array ordenado por fecha, de modo que siempre se muestre la última publicación cuando se accede por primera vez. Siempre que se cambie la publicación activa, el estado global (state) cambiará reflejando este cambio.</p>
+
+            <p>La segunda funcion imita de forma descarada (y muy básica) cómo sería un componente en <strong>React.js</strong> pero con <strong>Javascript</strong> sin más (aka Vanilla). En su interior se llama al resto de componentes que lo conforman.</p>
+
+            <p>¡Y hasta aquí la primera entrada! En las próxima explicaremos cual es la arquitectura de la plataforma y qué tecnologías intervienen en ella.</p>
         `
     },
 ]
