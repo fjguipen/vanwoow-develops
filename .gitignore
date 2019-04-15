@@ -1,4 +1,13 @@
+#Entry ile
+index.js
+#Configs
+package.json
+.babelrc
 #Assets
 assets/scss
 assets/css/*
 !assets/css/min
+#Source
+src
+#Modules
+node_modules
