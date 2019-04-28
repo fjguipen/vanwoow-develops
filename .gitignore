@@ -1,7 +1,6 @@
 #Entry ile
 index.js
 #Configs
-package.json
 package-lock.json
 .babelrc
 #Assets
