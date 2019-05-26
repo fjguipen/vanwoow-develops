@@ -43,7 +43,7 @@ const createContent = (index = state.current) =>{
         postData = posts[index];
     }
     
-    window.history.pushState({}, "", window.location.pathname + "/")
+    window.history.pushState({}, "", window.location.pathname)
 
     let root = document.getElementById('content');    
 
