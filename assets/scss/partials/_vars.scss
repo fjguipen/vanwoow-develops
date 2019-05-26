@@ -1,0 +1,29 @@
+//Fuentes
+$baseFont: 'Montserrat', sans-serif;
+ //Tamaños
+$baseFontSize: 18px;
+$codeFontSize_S: 14px;
+$codeFontSize_M: 16px;
+//Grosor
+%light {
+    font-weight: 300;
+}
+%regular{
+font-weight: 400;
+}
+%medium{
+    font-weight: 500;
+}
+
+%semi-bold{
+    font-weight: 600;
+}
+ 
+//Colores
+$negro: #3e3d3d;
+$negro-trans:rgba(62,61,61,0.98);
+$yellow:#ffdc00;
+$grisClaro: #636363;
+
+//Images
+$closeMenu:url("https://vanwoow.es/wp-content/themes/vanwoow/img/icons/menu-close.png");

@@ -1,0 +1,46 @@
+//imports
+@import 'partials/vars';
+@import 'partials/mixins';
+@import 'partials/general';
+@import 'partials/base';
+@import 'partials/navigation';
+@import 'partials/content';
+@import 'partials/code';
+
+#content article h2, .regular {
+    @extend %regular;
+  }
+
+.light {
+    @extend %light;
+}
+
+.medium {
+    @extend %medium;
+}
+  
+.semi-bold {
+    @extend %semi-bold;
+}
+  
+.back {
+z-index: -1;
+}
+
+.none {
+display: none;
+}
+
+.no-scroll {
+overflow-y: hidden;
+padding-right: 17px;
+}
+
+.fade-in {
+opacity: 0;
+}
+
+.fading {
+opacity: 1;
+@include transition(opacity, .8s, linear, .5s);
+}

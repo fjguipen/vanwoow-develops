@@ -4,10 +4,7 @@ index.js
 package-lock.json
 .babelrc
 #Assets
-assets/scss
 assets/css/*
 !assets/css/min
-#Source
-src
 #Modules
 node_modules

@@ -1,0 +1,114 @@
+header {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    height: 200px;
+    h1 {
+      margin-top: 75px;
+      text-transform: uppercase;
+    }
+    a{
+        max-width: 340px;
+        margin: auto;
+        width: 85%;
+        display: block;
+        #logo {
+            width:100%;
+            display: block;
+        }
+    }
+}
+  
+#more {
+    position: fixed;
+    top: -150px;
+    left: -150px;
+    width: 300px;
+    height: 300px;
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 20%;
+    background-color: rgba(62, 61, 61, 0.98);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all .5s linear 0s;
+    transition: all .5s linear 0s;
+    z-index: 2;
+    &:hover {
+        cursor: pointer;
+    }
+    &.visible {
+        top: -25px;
+        left: -25px;
+    }
+    &.opened {
+        top: 0px;
+        left: 0px;
+        cursor: default;
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%);
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+    }
+    #label {
+        position: absolute;
+        top: 66%;
+        left: 58%;
+        font-size: 16px;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        color: white;
+        &.closed {
+        display: none;
+        }
+    }
+    #close {
+        position: fixed;
+        top: 25px;
+        right: 25px;
+        background: none;
+        border: none;
+        background-image: url("https://vanwoow.es/wp-content/themes/vanwoow/img/icons/menu-close.png");
+        background-size: 100% 100%;
+        width: 38px;
+        height: 32px;
+        z-index: 9;
+        &:hover {
+        cursor: pointer;
+        }
+    }
+}
+
+footer {
+    height: 150px;
+    @include d-flex-center();
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    padding: 20px;
+    img {
+        width: 120px;
+        margin-right: 3px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    header h1 {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #more {
+        &.visible {
+        top: 0px;
+        left: 0px;
+        }
+        #label {
+        font-size: inherit;
+        top: 62%;
+        left: 53%;
+        }
+    }
+}
