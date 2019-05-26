@@ -28,10 +28,14 @@ const DateC = (date, by) => {
 }
 
 const Body = (text, url) => {
+
+    const {twitter, instagram, linkedin} = url
+
     return (
         `
         <div class="post-content">${text}</div>
-        <div class="footer">
+        ` + ( twitter && instagram && linkedin
+            ? `<div class="footer">
             <h4>¿Te gustaría dejar un comentario? Puedes hacerlo cualquiera de las publicaciones en las RRSS</h4>
             <a href="${url.twitter}" target="_blank">
                 <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/twi-g.png">
@@ -42,8 +46,9 @@ const Body = (text, url) => {
             <a href="${url.linkedin}" target="_blank">
                 <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/lin-g.png">
             </a>
-        </div>
-        `
+        </div>`
+        : '')
+        
 
     );
 }

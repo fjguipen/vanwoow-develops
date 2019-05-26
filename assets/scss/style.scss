@@ -7,7 +7,7 @@
 @import 'partials/content';
 @import 'partials/code';
 
-#content article h2, .regular {
+#content article h2,#content article h3, .regular {
     @extend %regular;
   }
 

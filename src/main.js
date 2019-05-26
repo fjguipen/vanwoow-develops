@@ -5,12 +5,46 @@ const state = {
 window.onload = () => {
     createContent();
     createMoreTrigger();
-    
+  
     rerunPrism();
 }
 
 const createContent = (index = state.current) =>{
-    let postData = posts[index];
+
+    let search = window.location.search
+    let query = new Map();
+    let postData= {};
+
+    if(search){
+        let queriedPost;
+        search = search.replace(/\?/, '')
+        search = search.split(',')
+        search.forEach(option => {
+            let pair = option.split('=')
+            query.set(pair[0], isNaN(pair[1])
+                        ? pair[1]
+                        : parseInt(pair[1]))
+        })
+        queriedPost = query.get('post')
+
+        if(typeof queriedPost != undefined){
+            
+            postData = posts[queriedPost]
+            if (!postData){
+                postData = posts[state.current];        
+            } else {
+                state.current = queriedPost
+            }
+        } else {
+            postData = posts[state.current];    
+        }
+
+    } else {
+        postData = posts[index];
+    }
+    
+    window.history.pushState({}, "", "/")
+
     let root = document.getElementById('content');    
 
     return root.innerHTML = Post(postData);
