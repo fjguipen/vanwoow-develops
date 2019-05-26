@@ -139,9 +139,9 @@ select * from anfitriones
         date: "9/05/2019",
         by:"JaviGP",
         url:{
-            twitter:null ,
-            instagram:null ,
-            linkedin: null
+            twitter:'https://twitter.com/GuisadoJavier/status/1132737075311198211',
+            instagram:'https://www.instagram.com/p/Bx8Cr-YIsP_/?utm_source=ig_web_copy_link' ,
+            linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:6538502427216359424'
         },
         body: 
             `<h2>¿Qué es?</h2>` +
@@ -245,9 +245,9 @@ query obtenerUsuario{
         date: "20/05/2019",
         by:"JaviGP",
         url:{
-            twitter: null,
-            instagram: null,
-            linkedin: null
+            twitter:'https://twitter.com/GuisadoJavier/status/1132737075311198211',
+            instagram:'https://www.instagram.com/p/Bx8Cr-YIsP_/?utm_source=ig_web_copy_link' ,
+            linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:6538502427216359424'
         },
         body: `<h2>SSR (Server Side Rendering)</h2>` +
             `<p>Quizás la forma más clásica de servir páginas web. El servidor se encarga de procesar todo el código y entregar al cliente la página web con todo “montado”, a partir de ahí, gracias a javascript podríamos <strong>realizar cambios en la página sin necesidad de volver a cargarla</strong> (el principio de las SPA). Aquí no tenemos el problema del SEO, pero la velocidad de respuesta se resiente, ya que es necesario solicitar al servidor el renderizado cada vez que queramos visitar otra página dentro del sitio web.</p>`+
@@ -362,9 +362,9 @@ const client = new ApolloClient({
         date: "24/05/2019",
         by:"JaviGP",
         url:{
-            twitter: null,
-            instagram: null,
-            linkedin: null 
+            twitter:'https://twitter.com/GuisadoJavier/status/1132737075311198211',
+            instagram:'https://www.instagram.com/p/Bx8Cr-YIsP_/?utm_source=ig_web_copy_link' ,
+            linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:6538502427216359424'
         },
         body: `<p>Un punto clave en el desarrollo de cualquier aplicación web es definir e implementar cómo manejaremos la autentificación del usuario. Existen numerosos sistemas de implementarlo pero al final todos se basan en un mismo principio.</p>` +
             `<p>Uno muy habitual en aplicaciones SPA es el uso de <strong>JWT</strong>. En el momento que el usuario inicia sesión correctamente, se almacena un token con la información del usuario encriptada (por favor, nunca incluir la contraseña aquí) en el sistema de almacenamiento del navegador (localStorage), entonces desde la aplicación podremos acceder a esta información y comprobar así la identidad del usuario. <strong>Todo ocurre en el cliente</strong> (con las vulnerabilidades que ello conlleva).</p>` +
