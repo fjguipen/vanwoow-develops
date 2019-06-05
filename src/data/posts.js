@@ -235,7 +235,7 @@ query obtenerUsuario{
             </div>` +
             `<p>Si quisiéramos podríamos solicitar el id, bastaría con añadir el campo dentro del query de la petición.</p>` +
             `<p>Del mismo modo que existe postman para REST, en graphql tenemos Graphql PlayGround, un marco donde poder jugar con nuestra API, testear su funcionamiento e inspeccionar el schema: </p>` + 
-            `<img src="img/gql_pg.PNG" alt="graphql playground" />` +
+            `<img src="assets/img/gql_pg.PNG" alt="graphql playground" />` +
             `<p>En una futura entrega hablaré de los problemas que introduce Graphql (no es oro todo lo que reluce), y cómo podemos solventarlos.</p>`
     },
 
