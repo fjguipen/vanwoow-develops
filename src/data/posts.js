@@ -580,13 +580,13 @@ const batchComunidadesA= async (keys,models) => {
     // Resolvers específicos para elementos dentro de localidad
     Localidad: {
         provincia: async (localidad,__, {loaders} ) => {
-            return await loaders.provinciaLoader .load(localidad.id_provincia);   
+            return await loaders.provinciaLoader.load(localidad.id_provincia);   
         }
     },
     //Resolvers específicos para elementos dentro de provincia
     Provincia: {
         ccaa: async (provincia, __, {loaders}) => {
-            return await loaders.comunidadALoader .load(provincia.id_ccaa);
+            return await loaders.comunidadALoader.load(provincia.id_ccaa);
         }
     }
 }</code></pre>`
