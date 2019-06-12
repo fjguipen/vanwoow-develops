@@ -453,9 +453,9 @@ Query: {
         date: "08/06/2019",
         by:"JaviGP",
         url:{
-            twitter: null,
+            twitter: "https://twitter.com/GuisadoJavier/status/1138880380998705152",
             instagram: null,
-            linkedin: null 
+            linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:6544646052186853376" 
         },
         body: 
             `<p>No todo es mágico en el mundo de Graphql. Es cierto que las APIs que implementan graphql nos ofrecen una flexibilidad enorme a la hora de solicitar los datos pero, esto tiene un coste. </p>`
