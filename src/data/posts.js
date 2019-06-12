@@ -446,7 +446,153 @@ Query: {
         }
     }
 }</code></pre>`
+    },
+    {
+        id: 5,
+        title: "Graphql y Dataloaders",
+        date: "08/06/2019",
+        by:"JaviGP",
+        url:{
+            twitter: null,
+            instagram: null,
+            linkedin: null 
+        },
+        body: 
+            `<p>No todo es mágico en el mundo de Graphql. Es cierto que las APIs que implementan graphql nos ofrecen una flexibilidad enorme a la hora de solicitar los datos pero, esto tiene un coste. </p>`
+            + `<p>Por detrás, se están produciendo numerosas llamadas a la base de datos que, por lo general podrían reducirse a una sola. Por ejemplo, imaginemos que disponemos de una base de datos donde tenemos guardada la información de las distintas localidades españolas, además de la información de las provincias y comunidades autónomas. Si quisiéramos recuperar todas las localidades junto con la información de la provincia y la comunidad autónoma a la que pertenecen. Podríamos hacerlo con una única sentencia SQL pero en graphql no funciona así, ya que obtener o no la información relacionada con las comunidades autónomas cuando se solicitan las localidades queda a elección del consumidor de la API.</p>`
+            + `<p>En Graphql definimos los tipos (<strong>schema</strong>), estos son ComunidadA, Provincia y Localidad,  y las funciones que lo resuelven (<strong>resolvers</strong>).</p>`
+            + `<pre><code class="lang-graphql">\
+#Schema
+type Localidad {
+    nombre : String
+    provincia : Provincia
+}
+
+type Provincia {
+    nombre: String
+    ccaa : ComunidadA
+}
+
+type ComunidadA {
+    nombre: String
+}</code></pre>`
+            + `<pre><code class="lang-js">\
+//Resolver
+{
+    Query: {
+        localidades: async (_,__,{models}) => {
+            return await models.Localidad.getAll();
+        }
     }
+}</code></pre>`
+            + `<pre><code class="lang-graphql">\
+#Query
+query {
+    localidades {
+        nombre
+    }
+}</code></pre>`
+            + `<p>¿Qué ocurre cuando queremos extraer localidades junto con los nombres de la provincia y la comunidad autónoma? Nuestro servidor graphql no sabrá como extraer esa información por lo que tendremos que indicarle a través de un resolver</p>`
+            + `<pre><code class="lang-graphql">\
+#Query
+query {
+    localidades {
+        nombre
+        provincia {
+            nombre
+            ccaa{
+                nombre
+            }
+        }
+    }
+}</code></pre>`
+            + `<pre><code class="lang-js">\
+//Resolvers
+{
+    Query: {
+        localidad: async (_,{id},{models}) => {
+            return await models.Localidad.get(id);
+        }
+        localidades: async (_,__,{models}) => {
+            return await models.Localidad.getAll();
+        }
+    },
+    // Resolvers específicos para elementos dentro de localidad
+    Localidad: {
+        provincia: async (localidad,__, {models} ) => {
+            return await models.Provincia.get(localidad.id_provincia);   
+        }
+    },
+    //Resolvers específicos para elementos dentro de provincia
+    Provincia: {
+        ccaa: asunc (provincia, __, {models}) => {
+            return await models.ComunidadA.get(provincia.id_ccaa);
+        }
+    }
+}</code></pre>`
+            + `<p>Ahora, podemos recuperar la información que queremos en el caso de que la solicitamos en el cuerpo del query, pero esto genera un problema de rendimiento del tipo <strong>N+1</strong>. Para cada localidad, se efectuará una petición SQL para retornar la información de la provincia, y de igual manera se realizará para cada provincia con la información de las comunidades autónomas. En España existen más de 8.000 municipios… podéis haceros una idea del número de peticiones necesarias. <strong>¿Cómo podemos solventarlo?</strong></p>`
+            + `<h2>Dataloaders (batching)</h2>`
+            + `<p>Dataloader es una herramienta creada por Facebook que nos permite procesar por lotes (<strong>Batching</strong>)  y cachear (<strong>Caching</strong>) nuestras queries.</p>`
+            + `<p><strong>Resumiendo:</strong> La función de batching acepta un <strong>array de keys</strong> (los identificadores de los items que estamos buscando) y devuelve una promesa que resuelve en un <strong>array de valores</strong>. Lo que nos permite hacer es ir “cargando” en ese array de keys todo esos queries relacionados entre sí y ejecutarlos en una sola sentencia al final (ojo, esto también tiene sus inconvenientes). Existe una norma universal y es que <strong>el array de valores devuelto ha de ser de la misma longitud y presentarse en el mismo orden que el array de keys</strong>.</p>`
+            + `<p>En este ejemplo quedaría algo así:</p>`
+            + `<pre><code class="lang-js">\
+import DataLoader from 'dataloader'
+
+//Pasamos el objeto loaders como contexto a ApolloServer
+loaders: {
+    provinciaLoader: new DataLoader(keys => batchProvincias(keys));
+    comunidadALoader: new DataLoader(keys => batchComunidadesA(keys));
+}</code></pre>`
+            + `<pre><code class="lang-js">\
+const batchProvincias= async (keys,models) => {
+
+    const localities = await models.Provincia.query()
+        .where('id', 'IN', keys)
+    
+    return keys.map( key => {
+        return localities.find( locality => {
+            return locality.id === key
+        })
+    })
+    }
+    
+const batchComunidadesA= async (keys,models) => {
+
+    const provinces = await models.ComunidadA.query()
+        .where('id', 'IN', keys)
+        
+    return keys.map( key => {
+        return provinces.find( province => {
+            return province.id === key
+        })
+    })
+}</code></pre>`
+            + `<pre><code class="lang-js">\
+{
+    Query: {
+        localidad: async (_,{id},{models}) => {
+            return await models.Localidad.get(id);
+        }
+        localidades: async (_,__,{models}) => {
+            return await models.Localidad.getAll();
+        }
+    },
+    // Resolvers específicos para elementos dentro de localidad
+    Localidad: {
+        provincia: async (localidad,__, {loaders} ) => {
+            return await loaders.provinciaLoader .load(localidad.id_provincia);   
+        }
+    },
+    //Resolvers específicos para elementos dentro de provincia
+    Provincia: {
+        ccaa: asunc (provincia, __, {loaders}) => {
+            return await loaders.comunidadALoader .load(provincia.id_ccaa);
+        }
+    }
+}</code></pre>`
+            + `<p>De este modo conseguimos reducir drásticamente el número de peticiones necesarias, ya que sólo necesitaremos una petición para traernos todas las provincias, y solo una para todas las comunidades.</p>`
+            + `<p>La pega es que Graphql está diseñado para obtener datos de múltiples fuentes. Si usamos batching y una de las fuentes es muy lenta, todo el proceso quedará a la espera del más lento, “Las operaciones por lotes son tan lentas como lo es la operación más lenta del lote”</p>`
+    },
 ];
 
 

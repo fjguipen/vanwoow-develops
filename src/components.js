@@ -30,23 +30,32 @@ const DateC = (date, by) => {
 const Body = (text, url) => {
 
     const {twitter, instagram, linkedin} = url
-
     return (
         `
         <div class="post-content">${text}</div>
-        ` + ( twitter && instagram && linkedin
+        ` + ( twitter || instagram || linkedin
             ? `<div class="footer">
-            <h4>¿Te gustaría dejar un comentario? Puedes hacerlo cualquiera de las publicaciones en las RRSS</h4>
-            <a href="${url.twitter}" target="_blank">
-                <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/twi-g.png">
-            </a>
-            <a href="${url.instagram}" target="_blank">
-                <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/insta-g.png">
-            </a>
-            <a href="${url.linkedin}" target="_blank">
-                <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/lin-g.png">
-            </a>
-        </div>`
+            <h4>¿Te gustaría dejar un comentario? Puedes hacerlo cualquiera de las publicaciones en las RRSS</h4>`
+            
+            + (twitter
+                ? `<a href="${url.twitter}" target="_blank">
+                    <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/twi-g.png">
+                </a>`
+            : '')
+
+            + (instagram
+                ? `<a href="${url.instagram}" target="_blank">
+                    <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/insta-g.png">
+                </a>`
+                : '')
+
+            + (linkedin
+                ? `<a href="${url.linkedin}" target="_blank">
+                    <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/lin-g.png">
+                </a>`
+                : '')
+
+            + `</div>`
         : '')
         
 
