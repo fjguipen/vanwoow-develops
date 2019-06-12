@@ -591,7 +591,7 @@ const batchComunidadesA= async (keys,models) => {
     }
 }</code></pre>`
             + `<p>De este modo conseguimos reducir drásticamente el número de peticiones necesarias, ya que sólo necesitaremos una petición para traernos todas las provincias, y solo una para todas las comunidades.</p>`
-            + `<p>La pega es que Graphql está diseñado para obtener datos de múltiples fuentes. Si usamos batching y una de las fuentes es muy lenta, todo el proceso quedará a la espera del más lento, “Las operaciones por lotes son tan lentas como lo es la operación más lenta del lote”</p>`
+            + `<p>La pega es que Graphql está diseñado para obtener datos de múltiples fuentes. Si usamos batching y una de las fuentes es muy lenta, todo el proceso quedará a la espera del más lento, <strong><i>“Las operaciones por lotes son tan lentas como lo es la operación más lenta del lote”</i></strong></p>`
     },
 ];
 
