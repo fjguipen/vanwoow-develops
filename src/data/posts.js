@@ -525,7 +525,7 @@ query {
     },
     //Resolvers específicos para elementos dentro de provincia
     Provincia: {
-        ccaa: asunc (provincia, __, {models}) => {
+        ccaa: async (provincia, __, {models}) => {
             return await models.ComunidadA.get(provincia.id_ccaa);
         }
     }
@@ -585,7 +585,7 @@ const batchComunidadesA= async (keys,models) => {
     },
     //Resolvers específicos para elementos dentro de provincia
     Provincia: {
-        ccaa: asunc (provincia, __, {loaders}) => {
+        ccaa: async (provincia, __, {loaders}) => {
             return await loaders.comunidadALoader .load(provincia.id_ccaa);
         }
     }
