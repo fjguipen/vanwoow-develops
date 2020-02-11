@@ -39,19 +39,19 @@ const Body = (text, url) => {
             
             + (twitter
                 ? `<a href="${url.twitter}" target="_blank">
-                    <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/twi-g.png">
+                    <img src="assets/img/twi-g.png">
                 </a>`
             : '')
 
             + (instagram
                 ? `<a href="${url.instagram}" target="_blank">
-                    <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/insta-g.png">
+                    <img src="assets/img/insta-g.png">
                 </a>`
                 : '')
 
             + (linkedin
                 ? `<a href="${url.linkedin}" target="_blank">
-                    <img src="https://vanwoow.es/wp-content/themes/vanwoow/img/logos/redes/lin-g.png">
+                    <img src="assets/img/lin-g.png">
                 </a>`
                 : '')
 

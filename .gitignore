@@ -1,8 +1,5 @@
 #Entry ile
 index.js
-#Configs
-package-lock.json
-.babelrc
 #Assets
 assets/css/*
 !assets/css/min
